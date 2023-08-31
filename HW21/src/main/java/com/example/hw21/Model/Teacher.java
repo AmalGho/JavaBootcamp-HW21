@@ -1,10 +1,7 @@
 package com.example.hw21.Model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +19,7 @@ public class Teacher {
     private Integer id;
 
     @NotEmpty(message = "name should not be empty")
-    @Length(min = 3, message = "name should be more than 3 characters")
+    @Size(min = 3, message = "name should be more than 3 characters")
     @Column(columnDefinition = "varchar(20) not null check (name>3)")
     private String name;
 

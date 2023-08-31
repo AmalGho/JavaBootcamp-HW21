@@ -28,9 +28,12 @@ public class AddressService {
 
     public void updateTeacherAddress(Integer address_id, AddressDTO addressDTO) {
         Address oldAddress = addressRepository.findAddressById(address_id);
+        if (oldAddress == null)
+            throw new ApiException("address id is wrong");
         Teacher teacher = teacherRepository.findTeacherById(oldAddress.getTeacher().getId());
         if (teacher == null)
             throw new ApiException("teacher id is wrong");
+
         oldAddress.setArea(addressDTO.getArea());
         oldAddress.setStreet(addressDTO.getStreet());
         oldAddress.setBuildingNumber(addressDTO.getBuildingNumber());
